@@ -1,0 +1,5 @@
+#misc
+.DS_Store
+
+#not me
+!.gitignore
