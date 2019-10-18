@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-import asyncio
 import logging
 import aiomysql
 
 __pool = None
+
 
 def log(sql, args=()):
     logging.info('SQL: %s' % sql)
@@ -54,7 +54,7 @@ async def execute(sql, args, autocommit=True):
                 affected = cur.rowcount
             if not autocommit:
                 await conn.commit()
-        except BaseException as e:
+        except BaseException:
             if not autocommit:
                 await conn.rollback()
             raise
